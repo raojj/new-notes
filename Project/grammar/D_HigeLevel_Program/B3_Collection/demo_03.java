@@ -30,7 +30,7 @@ public class demo_03 {
         Properties pros = new Properties();
         FileInputStream fileInputStream = null;
         try {
-            fileInputStream = new FileInputStream("D:\\APPs\\IDEA\\Project\\basic_knowledge\\basic_grammar_module\\src\\grammar\\D_HigeLevel_Program\\B3_Collection\\jdbc.properties");
+            fileInputStream = new FileInputStream("D:\\APPs\\IDEA\\Project\\basic_knowledge\\basic_grammar_module\\src\\grammar\\D_HigeLevel_Program\\B3_Collection\\jdbc1.properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
