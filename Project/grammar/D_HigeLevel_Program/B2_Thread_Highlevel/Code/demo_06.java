@@ -15,6 +15,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class demo_06 {
     public static void main(String[] args) {
         //提供指定线程数的线程池
+        @SuppressWarnings("unused")
         ExecutorService service = Executors.newFixedThreadPool(10);
         ThreadPoolExecutor service1 = (ThreadPoolExecutor) service;
         //设置线程池属性

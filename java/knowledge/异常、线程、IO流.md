@@ -1,10 +1,7 @@
-package grammar.D_HigeLevel_Program.A_Knowledge;
-/*
-异常：
-    一.概述
-        使用计算机语言进行项目开发的过程中，即使程序员把代码写的尽善尽美，在系统运行过程中仍然会遇到一些问题，因为
-        很多问题不是靠代码能够避免的，比如：客户输入的数据格式、读取的文件是否存在、网络是否始终保持通畅等等
+###异常：
 
+    一.概述
+            使用计算机语言进行项目开发的过程中，即使程序员把代码写的尽善尽美，在系统运行过程中仍然会遇到一些问题，因为很多问题不是靠代码能够避免的，比如：客户输入的数据格式、读取的文件是否存在、网络是否始终保持通畅等等
     二.异常
         1. 定义：
             在Java语言中，将程序执行中发生的不正常情况称为异常
@@ -15,7 +12,7 @@ package grammar.D_HigeLevel_Program.A_Knowledge;
             Exception：其他因编程错误或偶然的外在因素导致的一般性问题，可以使用针对性的代码进行处理
                   分类：非受检异常
                        受检异常
-
+    
     三.Throwable (B1:demo_02)
         1.java.lang.Throwable
             |-----java.lang.Error：一般不编写针对性的代码进行处理
@@ -31,9 +28,9 @@ package grammar.D_HigeLevel_Program.A_Knowledge;
                     |-----NumberFormatException
                     |-----InputMismatchException
                     |-----ArithmeticException
-
+    
     四.异常的处理
-
+    
         在编写程序的时候，经常要在可能出现错误的地方加上检测的代码
             Java采用的异常处理机制，是将异常处理的程序代码集中在一起与正常的程序代码分开，使得程序简洁、优雅、有益于维护
             1.try-catch-finally:解决异常(B1:demo_03) 可以catch多个异常，finally可以省略
@@ -59,6 +56,9 @@ package grammar.D_HigeLevel_Program.A_Knowledge;
             1.继承于现有的异常结构：RuntimeException、Exception
             2.提供全局变量：serialVersionUID
 
+###线程：
+
+```
 线程：
     一.概述
         进程可以进一步细分为线程，是一个程序内部的一条执行路径
@@ -171,7 +171,11 @@ package grammar.D_HigeLevel_Program.A_Knowledge;
         3. notifyAll():一旦执行此方法，就会唤醒所有被wait的线程
         以上三种方法只能在同步代码块和同步方法中使用，方法的调用者，必须是同步代码块或同步方法的同步监视器，否者会出现IllegalMonitorStateException的异常
         这三种方法定义在java.lang.Object类中
+```
 
+### 常用类：
+
+```
 常用类：
     一. String、StringBuffer & StringBuilder B2_demo_07
         1.String：
@@ -264,7 +268,11 @@ package grammar.D_HigeLevel_Program.A_Knowledge;
     六. System类
     七. Math类
     八. BigInteger & BigDecimal
+```
 
+###枚举类&注解
+
+```
 枚举类 & 注解
     1. 枚举类：B2: demo_11
         1.1 类的对象只有有限个，确定的。当需要定义一组常量时，强烈建议使用枚举类
@@ -316,7 +324,11 @@ package grammar.D_HigeLevel_Program.A_Knowledge;
                 ，如果只有一个参数成员，且名称为value，以省略“value=”
                  没有成员定义的 Annotation 称为标记; 包含成员变量的 Annotation 称为元数据 Annotation
                 注意：自定义注解必须配上注解的信息处理流程才有意义。
+```
 
+### 集合
+
+```
 集合： B3：demo_01
     1. 概述
         集合、数组都是对多个数据进行存储的结构，简称Java容器
@@ -535,7 +547,11 @@ package grammar.D_HigeLevel_Program.A_Knowledge;
         boolean replaceAll(List list，Object oldVal，Object newVal)：使用新值替换List 对象的所有旧值
         同步控制:
         Collections 类中提供了多个 synchronizedXxx() 方法，该方法可使将指定集合包装成线程同步的集合，从而可以解决多线程并发访问集合时的线程安全问题
+```
 
+### 泛型
+
+```
 泛型：B3：demo_04
     1. 定义
          所谓泛型，就是允许在定义类、接口时通过一个标识表示类中某个属性的类型或者是某个方法的返回值及参数类型。这个类型参数将在使用时（例如，
@@ -615,5 +631,252 @@ package grammar.D_HigeLevel_Program.A_Knowledge;
              <? extends Number> (无穷小 , Number]只允许泛型为Number及Number子类的引用调用
              <? super Number> [Number , 无穷大)只允许泛型为Number及Number父类的引用调用
              <? extends Comparable>只允许泛型为实现Comparable接口的实现类的引用调用
+```
 
- */
+###IO流
+
+```
+IO流：
+    1. file B4:demo_01
+        1.1 file类的使用：
+            1.1.1 File类的一个对象，代表一个对象或一个文件目录(俗称：文件夹)
+            1.1.2 File类声明在java.io包下
+            1.1.3 常用的构造器
+                 public File(String pathname)以pathname为路径创建File对象，可以是绝对路径或者相对路径，如果
+                  pathname是相对路径，则默认的当前路径在系统属性user.dir中存储。
+                 绝对路径：是一个固定的路径,从盘符开始
+                 相对路径：是相对于某个位置开始
+                 public File(String parent,String child)以parent为父路径，child为子路径创建File对象。
+                 public File(File parent,String child)根据一个父File对象和子文件路径创建File对象
+                 路径中的每级目录之间用一个路径分隔符隔开。
+                 路径分隔符和系统有关：
+                 windows和DOS系统默认使用“\”来表示
+                 UNIX和URL使用“/”来表示
+                 Java程序支持跨平台运行，因此路径分隔符要慎用。
+                 为了解决这个隐患，File类提供了一个常量：public static final String separator。根据操作系统，动态的提供分隔符。
+            1.1.4 常用方法
+                File类的获取功能
+                 public String getAbsolutePath()：获取绝对路径
+                 public String getPath() ：获取路径
+                 public String getName() ：获取名称
+                 public String getParent()：获取上层文件目录路径。若无，返回null
+                 public long length() ：获取文件长度（即：字节数）。不能获取目录的长度。
+                 public long lastModified() ：获取最后一次的修改时间，毫秒值
+                如下两个方法适用于文件目录
+                 public String[] list() ：获取指定目录下的所有文件或者文件目录的名称数组
+                 public File[] listFiles() ：获取指定目录下的所有文件或者文件目录的File数组
+                 File类的重命名功能
+                需要当前文件存在且dest不能存在
+                 public boolean renameTo(File dest):把文件重命名为指定的文件路径
+                 File类的判断功能
+                 public boolean isDirectory()：判断是否是文件目录
+                 public boolean isFile() ：判断是否是文件
+                 public boolean exists() ：判断是否存在
+                 public boolean canRead() ：判断是否可读
+                 public boolean canWrite() ：判断是否可写
+                 public boolean isHidden() ：判断是否隐藏
+                 File类的创建功能
+                 public boolean createNewFile() ：创建文件。若文件存在，则不创建，返回false
+                 public boolean mkdir() ：创建文件目录。如果此文件目录存在，就不创建了。
+                如果此文件目录的上层目录不存在，也不创建。
+                 public boolean mkdirs() ：创建文件目录。如果上层文件目录不存在，一并创建
+                注意事项：如果你创建文件或者文件目录没有写盘符路径，那么，默认在项目路径下。
+                 File类的删除功能
+                 public boolean delete()：删除文件或者文件夹
+                删除注意事项：
+                Java中的删除不走回收站。
+                要删除一个文件目录，请注意该文件目录内不能包含文件或者文件目录
+    2. IO流原理 B4_demo_02
+         I/O是Input/Output的缩写， I/O技术是非常实用的技术，用于处理设备之间的数据传输。如读/写文件，网络通讯等。
+         Java程序中，对于数据的输入/输出操作以“流(stream)” 的方式进行。
+         java.io包下提供了各种“流”类和接口，用以获取不同种类的数据，并通过标准的方法输入或输出数据。
+        输入input：读取外部数据（磁盘、光盘等存储设备的数据）到程序（内存）中。
+        输出output：将程序（内存）数据输出到磁盘、光盘等存储备中。
+    3. 分类
+        按操作数据单位不同分为：字节流(8 bit)，字符流(16 bit)
+              (抽象基类) 字节流(图片，视频，音频)     字符流(文本)
+            > 输入流     InputStream              Reader
+            > 输出流     OutputStream             Writer
+        按数据流的流向不同分为：输入流，输出流
+        按流的角色的不同分为：节点流，处理流
+            > 节点流：直接从数据源或目的地读写数据
+            > 处理流：不直接连接到数据源或目的地，而是“连接”在已存在的流（节点流或处理流）之上，通过对数据的处理为程序提
+                     供更为强大的读写功能。
+            > 转换流(字符流)：utf-8。txt--->字节流转化为字符流--->程序--->字符流转化为字节流--->gbk.txt
+                InputStreamReader:将字节流转化为字符流
+                OutputStreamReader:将字符流转化为字节流
+                解码:字节、字节数组---->字符串，字符数组
+                编码:字节、字节数组<----字符串，字符数组
+                字符集:
+                     编码表的由来
+                    计算机只能识别二进制数据，早期由来是电信号。为了方便应用计算机，让它可以识
+                    别各个国家的文字。就将各个国家的文字用数字来表示，并一一对应，形成一张表。
+                    这就是编码表。
+                     常见的编码表
+                     ASCII：美国标准信息交换码。
+                     用一个字节的7位可以表示。
+                     ISO8859-1：拉丁码表。欧洲码表
+                     用一个字节的8位表示。
+                     GB2312：中国的中文编码表。最多两个字节编码所有字符
+                     GBK：中国的中文编码表升级，融合了更多的中文文字符号。最多两个字节编码
+                     Unicode：国际标准码，融合了目前人类使用的所有字符。为每个字符分配唯一的字符码。所有的文字都用两个字节来表示。
+                     UTF-8：变长的编码方式，可用1-4个字节来表示一个字符。
+
+            > 标准输入输出流：B4：demo_03
+                System.in:键盘输入 属于InputStream
+                System.out:控制台输出 是PrintStream，其是OutputStream的子类
+                重定向：通过System类的setIn，setOut方法对默认设备进行改变。
+                 public static void setIn(InputStream in)
+                 public static void setOut(PrintStream out)
+
+            > 打印流
+                实现将基本数据类型的数据格式转化为字符串输出
+                打印流：PrintStream和PrintWriter
+                     提供了一系列重载的print()和println()方法，用于多种数据类型的输出
+                     PrintStream和PrintWriter的输出不会抛出IOException异常
+                     PrintStream和PrintWriter有自动flush功能
+                     PrintStream 打印的所有字符都使用平台的默认字符编码转换为字节。
+                    在需要写入字符而不是写入字节的情况下，应该使用 PrintWriter 类。
+                     System.out返回的是PrintStream的实例
+
+            > 数据流
+                 为了方便地操作Java语言的基本数据类型和String的数据，可以使用数据流。
+                 数据流有两个类：(用于读取和写出基本数据类型、String类的数据）
+                     DataInputStream 和 DataOutputStream
+                     分别“套接”在 InputStream 和 OutputStream 子类的流上
+                 DataInputStream中的方法
+                     boolean readBoolean() byte readByte()
+                     char readChar() float readFloat()
+                     double readDouble() short readShort()
+                     long readLong() int readInt()
+                     String readUTF() void readFully(byte[] b)
+                 DataOutputStream中的方法
+                     将上述的方法的read改为相应的write即可。
+
+            > 对象流 B4:demo_04
+                 ObjectInputStream和OjbectOutputSteam
+                     用于存储和读取基本数据类型数据或对象的处理流。它的强大之处就是可以把Java中的对象写入到数据源中，也能把对象从数据源中还原回来。
+                 序列化：用ObjectOutputStream类保存基本类型数据或对象的机制
+                 反序列化：用ObjectInputStream类读取基本类型数据或对象的机制
+                 ObjectOutputStream和ObjectInputStream不能序列化static和transient修饰的成员变量
+                >对象序列化
+                对象序列化机制允许把内存中的Java对象转换成平台无关的二进制流，从而允许把这种二进制流持久地保存在磁盘上，或通过网络将这种二进制流传
+                输到另一个网络节点。//当其它程序获取了这种二进制流，就可以恢复成原来的Java对象
+                序列化的好处在于可将任何实现了Serializable接口的对象转化为字节数据，使其在保存和传输时可被还原
+                序列化是 RMI（Remote Method Invoke – 远程方法调用）过程的参数和返回值都必须实现的机制，而 RMI 是 JavaEE 的基础。因此序列化机制是
+                JavaEE 平台的基础
+                如果需要让某个对象支持序列化机制，则必须让对象所属的类及其属性是可序列化的，为了让某个类是可序列化的，该类必须实现如下两个接口之一。
+                否则，会抛出NotSerializableException异常
+                    Serializable
+                    Externalizable
+                凡是实现Serializable接口的类都有一个表示序列化版本标识符的静态变量：
+                    private static final long serialVersionUID;
+                    同时也要保证其内部所有属性也必须是可序列化的（默认情况下，基本数据类型是可序列化的,static和transient修饰的成员变量不可序列化）
+                    serialVersionUID用来表明类的不同版本间的兼容性。简言之，其目的是以序列化对象进行版本控制，有关各版本反序列化时是否兼容。
+                如果类没有显示定义这个静态常量，它的值是Java运行时环境根据类的内部细节自
+                动生成的。若类的实例变量做了修改，serialVersionUID 可能发生变化。故建议，
+                显式声明。
+                 简单来说，Java的序列化机制是通过在运行时判断类的serialVersionUID来验
+                证版本一致性的。在进行反序列化时，JVM会把传来的字节流中的
+                serialVersionUID与本地相应实体类的serialVersionUID进行比较，如果相同
+                就认为是一致的，可以进行反序列化，否则就会出现序列化版本不一致的异
+                常。(InvalidCastException)
+                若某个类实现了 Serializable 接口，该类的对象就是可序列化的：
+                    创建一个 ObjectOutputStream
+                    调用 ObjectOutputStream 对象的 writeObject(对象) 方法输出可序列化对象
+                    注意写出一次，操作flush()一次
+                反序列化
+                    创建一个 ObjectInputStream
+                    调用 readObject() 方法读取流中的对象
+                强调：如果某个类的属性不是基本数据类型或 String 类型，而是另一个
+                引用类型，那么这个引用类型必须是可序列化的，否则拥有该类型的
+                Field 的类也不能序列化
+
+        >随机存取文件流（RandomAccessFile）B4:demo_05
+            RandomAccessFile 声明在java.io包下，但直接继承于java.lang.Object类。并
+            且它实现了DataInput、DataOutput这两个接口，也就意味着这个类既可以读也可以写。
+            RandomAccessFile 类支持 “随机访问” 的方式，程序可以直接跳到文件的任意地方来读、写文件
+                支持只访问文件的部分内容
+                可以向已存在的文件后追加内容
+            RandomAccessFile 对象包含一个记录指针，用以标示当前读写处的位置。
+            RandomAccessFile 类对象可以自由移动记录指针：
+            long getFilePointer()：获取文件记录指针的当前位置
+            void seek(long pos)：将文件记录指针定位到 pos 位置
+            构造器
+                public RandomAccessFile(File file, String mode)
+                public RandomAccessFile(String name, String mode)
+            创建 RandomAccessFile 类实例需要指定一个 mode 参数，该参数指定 RandomAccessFile 的访问模式：
+                r: 以只读方式打开
+                rw：打开以便读取和写入
+                rwd:打开以便读取和写入；同步文件内容的更新
+                rws:打开以便读取和写入；同步文件内容和元数据的更新
+             如果模式为只读r。则不会创建文件，而是会去读取一个已经存在的文件，
+            如果读取的文件不存在则会出现异常。 如果模式为rw读写。如果文件不
+            存在则会去创建文件，如果存在则不会创建。
+
+        >JAVA.NIO
+         Java NIO (New IO，Non-Blocking IO)是从Java 1.4版本开始引入的一套新
+        的IO API，可以替代标准的Java IO API。NIO与原来的IO有同样的作用和目
+        的，但是使用的方式完全不同，NIO支持面向缓冲区的(IO是面向流的)、基于
+        通道的IO操作。NIO将以更加高效的方式进行文件的读写操作。
+         Java API中提供了两套NIO，一套是针对标准输入输出NIO，另一套就是网
+        络编程NIO。
+            |-----java.nio.channels.Channel
+            |-----FileChannel:处理本地文件
+            |-----SocketChannel：TCP网络编程的客户端的Channel
+            |-----ServerSocketChannel:TCP网络编程的服务器端的Channel
+            |-----DatagramChannel：UDP网络编程中发送端和接收端的Channel
+         早期的Java只提供了一个File类来访问文件系统，但File类的功能比较有限，所
+        提供的方法性能也不高。而且，大多数方法在出错时仅返回失败，并不会提供异常信息。
+         NIO. 2为了弥补这种不足，引入了Path接口，代表一个平台无关的平台路径，描
+        述了目录结构中文件的位置。Path可以看成是File类的升级版本，实际引用的资
+        源也可以不存在。
+         在以前IO操作都是这样写的:
+            import java.io.File;
+            File file = new File("index.html");
+         但在Java7 中，我们可以这样写：
+            import java.nio.file.Path;
+            import java.nio.file.Paths;
+            Path path = Paths.get("index.html");
+         同时，NIO.2在java.nio.file包下还提供了Files、Paths工具类，Files包含
+        了大量静态的工具方法来操作文件；Paths则包含了两个返回Path的静态工厂方法。
+         Paths 类提供的静态 get() 方法用来获取 Path 对象：
+            static Path get(String first, String … more) : 用于将多个字符串串连成路径
+            static Path get(URI uri): 返回指定uri对应的Path路径
+        PATH接口：
+         Path 常用方法：
+             String toString() ： 返回调用 Path 对象的字符串表示形式
+             boolean startsWith(String path) : 判断是否以 path 路径开始
+             boolean endsWith(String path) : 判断是否以 path 路径结束
+             boolean isAbsolute() : 判断是否是绝对路径
+             Path getParent() ：返回Path对象包含整个路径，不包含 Path 对象指定的文件路径
+             Path getRoot() ：返回调用 Path 对象的根路径
+             Path getFileName() : 返回与调用 Path 对象关联的文件名
+             int getNameCount() : 返回Path 根目录后面元素的数量
+             Path getName(int idx) : 返回指定索引位置 idx 的路径名称
+             Path toAbsolutePath() : 作为绝对路径返回调用 Path 对象
+             Path resolve(Path p) :合并两个路径，返回合并后的路径对应的Path对象
+             File toFile(): 将Path转化为File类的对象
+         java.nio.file.Files 用于操作文件或目录的工具类。
+         Files常用方法：
+             Path copy(Path src, Path dest, CopyOption … how) : 文件的复制
+             Path createDirectory(Path path, FileAttribute<?> … attr) : 创建一个目录
+             Path createFile(Path path, FileAttribute<?> … arr) : 创建一个文件
+             void delete(Path path) : 删除一个文件/目录，如果不存在，执行报错
+             void deleteIfExists(Path path) : Path对应的文件/目录如果存在，执行删除
+             Path move(Path src, Path dest, CopyOption…how) : 将 src 移动到 dest 位置
+             long size(Path path) : 返回 path 指定文件的大小
+         Files常用方法：用于判断
+             boolean exists(Path path, LinkOption … opts) : 判断文件是否存在
+             boolean isDirectory(Path path, LinkOption … opts) : 判断是否是目录
+             boolean isRegularFile(Path path, LinkOption … opts) : 判断是否是文件
+             boolean isHidden(Path path) : 判断是否是隐藏文件
+             boolean isReadable(Path path) : 判断文件是否可读
+             boolean isWritable(Path path) : 判断文件是否可写
+             boolean notExists(Path path, LinkOption … opts) : 判断文件是否不存在
+             Files常用方法：用于操作内容
+             SeekableByteChannel newByteChannel(Path path, OpenOption…how) : 获取与指定文件的连接，how 指定打开方式。
+             DirectoryStream<Path> newDirectoryStream(Path path) : 打开 path 指定的目录
+             InputStream newInputStream(Path path, OpenOption…how):获取 InputStream 对象
+             OutputStream newOutputStream(Path path, OpenOption…how) : 获取 OutputStream 对象
+```
